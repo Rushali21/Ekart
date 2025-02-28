@@ -4,25 +4,23 @@ pipeline{
             label 'slave1'
         }
     }
-    stages  {
-        stage ('maven version') {
-            steps {
+    stages{
+        stage('maven version') {
+            steps{
                 sh 'mvn -v'
             }
         }
     }
-    stage ('git clone repo')
+    stage('git clone repo')
     {
-        steps {
+        steps{
             git branch: 'main', url: 'https://github.com/Rushali21/Ekart.git'
         }
     }
-    stage ('maven build')
+    stage('maven build')
     {
-        steps {
+        steps{
             sh 'mvn clean package'
         }
     }
-
-
 }
